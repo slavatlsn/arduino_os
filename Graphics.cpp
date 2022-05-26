@@ -162,47 +162,25 @@ Selector::Selector(int x_1, int y_1, int x_2, int y_2, int n, String* var)
   y1 = y_1;
   y2 = y_2;
   s = n;
-  h = abs(y2 - y1) + 1;
-  l = abs(x2 - y2);
-  visible = new int [h];
-  for(int i = 0; i < h; i++) visible[i] = i;
 }
 
 void Selector::setPos(int p)
 {
-  if(p >= 0 && p < s) 
-  {
-    int delta = pos - p;
-    if((delta == 1) && (pos == visible[0])) 
-    {
-      for(int i = 0; i < sizeof(visible); i++) visible[i] = visible[i] - delta;
-    }
-    if((delta == -1) && (pos == visible[sizeof(visible)-1])) 
-    {
-      for(int i = 0; i < sizeof(visible); i++) visible[i] = visible[i] - delta;
-    }
-    pos = p;
-  }
+  if(p >= 0 && p < s) pos = p;
 }
 
-void Selector::render(LiquidCrystal lcd, int* shifts)
+void Selector::render(LiquidCrystal lcd, int shift)
 {
-  for(int i = 0; i < h; i++)
-  {
-    lcd.setCursor(x1, y1 + i);
-    if(pos == visible[i]) lcd.print(">"); else lcd.print(" ");
-    for(int j = 0; j < l; j++)
-    {
-     lcd.print(arr[visible[i]].substring(j, j + 1)); 
-    }
-  }
+  Text text(x1, y1, x2, y1);
+  text.setText(arr[pos]);
+  text.render(lcd, shift);
 }
 
 void Selector::eraze(LiquidCrystal lcd)
 {
-  for(int i = 0; i < h; i++)
+  for(int i = x1; i < x2 + 1; i++)
   {
-    for(int j = 0; j < l+1; j++)
+    for(int j = y1; j < y2 + 1; j++)
     {
       lcd.setCursor(j, i);
       lcd.print(" ");
