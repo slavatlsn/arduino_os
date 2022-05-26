@@ -185,11 +185,8 @@ class Selector
   int pos;
   int x1, x2, y1, y2, s;
   String* arr;
-  int* visible;
   Selector(int x_1, int y_1, int x_2, int y_2, int n, String* var);
   void setPos(int p);
-  void render(LiquidCrystal lcd, int* shifts);
+  void render(LiquidCrystal lcd, int shift);
   void eraze(LiquidCrystal lcd);
-  private:
-  int h, l;
 };
