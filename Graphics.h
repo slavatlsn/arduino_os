@@ -10,7 +10,7 @@ class Text
     Text(int x_1, int y_1, int x_2, int y_2);
     void setText(String str);
     void render(LiquidCrystal lcd, int shift);
-    void eraze(LiquidCrystal lcd);
+    void erase(LiquidCrystal lcd);
 };
 
 class ProgressBar
@@ -176,7 +176,7 @@ class ProgressBar
     ProgressBar(int x_1, int y_1, int x_2, int y_2);
     void setProgress(int pr);
     void render(LiquidCrystal lcd, String type);
-    void eraze(LiquidCrystal lcd);
+    void erase(LiquidCrystal lcd);
 };
 
 class Selector
@@ -188,7 +188,7 @@ class Selector
   Selector(int x_1, int y_1, int x_2, int y_2, int n, String* var);
   void setPos(int p);
   void render(LiquidCrystal lcd, int shift);
-  void eraze(LiquidCrystal lcd);
+  void erase(LiquidCrystal lcd);
 };
 
 class Bitmap
@@ -196,7 +196,7 @@ class Bitmap
   public:
     Bitmap(int (*dots)[2], int n, int x1, int y1, int x2, int y2);
     void render(LiquidCrystal lcd);
-    void eraze(LiquidCrystal lcd);
+    void erase(LiquidCrystal lcd);
   private:  
     int (*_dots)[2];
     int _x1, _x2, _y1, _y2, _n;  
