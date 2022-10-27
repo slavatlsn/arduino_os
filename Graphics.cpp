@@ -98,6 +98,8 @@ void ProgressBar::eraze(LiquidCrystal lcd)
     }  
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 Text::Text(int x_1, int y_1, int x_2, int y_2) 
 {
   x1 = x_1;
@@ -154,6 +156,8 @@ void Text::eraze(LiquidCrystal lcd)
   }
 }
 
+//----------------------------------------------------------------------------------------------------------------
+
 Selector::Selector(int x_1, int y_1, int x_2, int y_2, int n, String* var)
 {
   arr = var;
@@ -184,6 +188,69 @@ void Selector::eraze(LiquidCrystal lcd)
     {
       lcd.setCursor(j, i);
       lcd.print(" ");
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------
+
+Bitmap::Bitmap(int (*dots)[2], int n, int x1, int y1, int x2, int y2)
+{
+  _dots = dots;
+  _x1 = x1;
+  _y1 = y1;
+  _y2 = y2;
+  _x2 = x2;
+  _n = n;
+}
+
+void Bitmap::render(LiquidCrystal lcd)
+{
+  int a = 0;
+  int cols = abs(_x1 - _x2) + 1;
+  int rows = abs(_y1 - _y2) + 1;
+  if(rows*cols <= 8)
+  {
+    for(int i = 0; i < rows; i++)
+    {
+      for(int j = 0; j < cols; j++)
+      {
+        const byte variants[5] =
+        {
+          0b10000,
+          0b01000,
+          0b00100,
+          0b00010,
+          0b00001
+        };
+      
+        byte chunk[8] 
+        {
+          0b00000,
+          0b00000,
+          0b00000,
+          0b00000,
+          0b00000,
+          0b00000,
+          0b00000,
+          0b00000
+        };
+        int xmin = j*5;
+        int xmax = (j+1)*5;
+        int ymin = (rows-i-1)*8;
+        int ymax = (rows-i)*8;
+        for(int k = 0; k < _n; k++)
+        {
+          if((_dots[k][0] > xmin) && (_dots[k][1] > ymin) && (_dots[k][0] <= xmax) && (_dots[k][1] <= ymax)) 
+          {
+            chunk[8 - _dots[k][1] + ymin] += variants[_dots[k][0] - xmin - 1];
+          }
+        }
+        lcd.createChar(a, chunk);
+        lcd.setCursor(j, i);
+        lcd.write((byte)a);
+        a++;
+      }
     }
   }
 }
