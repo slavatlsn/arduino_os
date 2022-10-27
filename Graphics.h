@@ -196,6 +196,7 @@ class Bitmap
   public:
     Bitmap(int (*dots)[2], int n, int x1, int y1, int x2, int y2);
     void render(LiquidCrystal lcd);
+    void eraze(LiquidCrystal lcd);
   private:  
     int (*_dots)[2];
     int _x1, _x2, _y1, _y2, _n;  
