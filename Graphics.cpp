@@ -86,7 +86,7 @@ void ProgressBar::render(LiquidCrystal lcd, String type)
   }
 }
 
-void ProgressBar::eraze(LiquidCrystal lcd)
+void ProgressBar::erase(LiquidCrystal lcd)
 {
   for(int i = 0; i < abs(x2 - x1) + 1; i++)
     {
@@ -142,7 +142,7 @@ void Text::render(LiquidCrystal lcd, int shift)
   }
 }
 
-void Text::eraze(LiquidCrystal lcd)
+void Text::erase(LiquidCrystal lcd)
 {
   int l = abs(x2 - x1) + 1;
   int h = abs(y2 - y1) + 1;
@@ -180,7 +180,7 @@ void Selector::render(LiquidCrystal lcd, int shift)
   text.render(lcd, shift);
 }
 
-void Selector::eraze(LiquidCrystal lcd)
+void Selector::erase(LiquidCrystal lcd)
 {
   for(int i = x1; i < x2 + 1; i++)
   {
@@ -255,7 +255,7 @@ void Bitmap::render(LiquidCrystal lcd)
   }
 }
 
-void Selector::eraze(LiquidCrystal lcd)
+void Selector::erase(LiquidCrystal lcd)
 {
   for(int i = x1; i < x2 + 1; i++)
   {
