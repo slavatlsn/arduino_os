@@ -1,13 +1,5 @@
 #include <Graphics.h>
 
-ProgressBar::ProgressBar()
-{
-  x1 = 0;
-  x2 = 0;
-  y1 = 0;
-  y2 = 0;
-}
-
 ProgressBar::ProgressBar(int x_1, int y_1, int x_2, int y_2)
 {
   x1 = x_1;
@@ -107,14 +99,6 @@ void ProgressBar::erase(LiquidCrystal lcd)
 }
 
 //----------------------------------------------------------------------------------------------------------------
-
-Text::Text() 
-{
-  x1 = 0;
-  x2 = 0;
-  y1 = 0;
-  y2 = 0;
-}
 
 Text::Text(int x_1, int y_1, int x_2, int y_2) 
 {
