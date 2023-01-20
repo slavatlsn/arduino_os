@@ -254,15 +254,3 @@ void Bitmap::render(LiquidCrystal lcd)
     }
   }
 }
-
-void Selector::erase(LiquidCrystal lcd)
-{
-  for(int i = x1; i < x2 + 1; i++)
-  {
-    for(int j = y1; j < y2 + 1; j++)
-    {
-      lcd.setCursor(j, i);
-      lcd.print(" ");
-    }
-  }
-}
