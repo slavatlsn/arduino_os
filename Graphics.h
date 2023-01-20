@@ -7,6 +7,7 @@ class Text
   public:
     int x1, x2, y1, y2;
     String text;
+    Text();
     Text(int x_1, int y_1, int x_2, int y_2);
     void setText(String str);
     void render(LiquidCrystal lcd, int shift);
@@ -173,6 +174,7 @@ class ProgressBar
      0b11111,
      0b11111
     };            
+    ProgressBar();
     ProgressBar(int x_1, int y_1, int x_2, int y_2);
     void setProgress(int pr);
     void render(LiquidCrystal lcd, String type);
