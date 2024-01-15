@@ -15,7 +15,7 @@ void ProgressBar::setProgress(int pr)
   progress = pr;
 }
 
-void ProgressBar::render(LiquidCrystal lcd, String type)
+void ProgressBar::render(LiquidCrystalRus lcd, String type)
 {
   if(type == "horizontal")
   {
@@ -88,7 +88,7 @@ void ProgressBar::render(LiquidCrystal lcd, String type)
   }
 }
 
-void ProgressBar::erase(LiquidCrystal lcd)
+void ProgressBar::erase(LiquidCrystalRus lcd)
 {
   for(int i = 0; i < abs(x2 - x1) + 1; i++)
     {
@@ -118,7 +118,7 @@ void Text::setText(String str)
   if(str.length() < n) for(int i = 0; i < n - str.length(); i++) text = text + " "; else for(int i = 0; i < n * k - str.length(); i++) text = text + " ";
 }
 
-void Text::render(LiquidCrystal lcd, int shift)
+void Text::render(LiquidCrystalRus lcd, int shift)
 {
   String text2;
   if(shift == 0) text2 = text; else text2 = text.substring(shift, text.length()) + text.substring(0, shift);
@@ -144,7 +144,7 @@ void Text::render(LiquidCrystal lcd, int shift)
   }
 }
 
-void Text::erase(LiquidCrystal lcd)
+void Text::erase(LiquidCrystalRus lcd)
 {
   int l = abs(x2 - x1) + 1;
   int h = abs(y2 - y1) + 1;
@@ -175,14 +175,14 @@ void Selector::setPos(int p)
   if(p >= 0 && p < s) pos = p;
 }
 
-void Selector::render(LiquidCrystal lcd, int shift)
+void Selector::render(LiquidCrystalRus lcd, int shift)
 {
   Text text(x1, y1, x2, y1);
   text.setText(arr[pos]);
   text.render(lcd, shift);
 }
 
-void Selector::erase(LiquidCrystal lcd)
+void Selector::erase(LiquidCrystalRus lcd)
 {
   for(int i = x1; i < x2 + 1; i++)
   {
@@ -206,7 +206,7 @@ Bitmap::Bitmap(int (*dots)[2], int n, int x1, int y1, int x2, int y2)
   _n = n;
 }
 
-void Bitmap::render(LiquidCrystal lcd)
+void Bitmap::render(LiquidCrystalRus lcd)
 {
   int a = 0;
   int cols = abs(_x1 - _x2) + 1;
