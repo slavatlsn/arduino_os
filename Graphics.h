@@ -1,6 +1,6 @@
 #pragma once
 #include <Arduino.h>
-#include <LiquidCrystal.h>
+#include <LiquidCrystalRus.h>
 
 class Text
 {
@@ -9,8 +9,8 @@ class Text
     String text;
     Text(int x_1, int y_1, int x_2, int y_2);
     void setText(String str);
-    void render(LiquidCrystal lcd, int shift);
-    void erase(LiquidCrystal lcd);
+    void render(LiquidCrystalRus lcd, int shift);
+    void erase(LiquidCrystalRus lcd);
 };
 
 class ProgressBar
@@ -175,8 +175,8 @@ class ProgressBar
     };            
     ProgressBar(int x_1, int y_1, int x_2, int y_2);
     void setProgress(int pr);
-    void render(LiquidCrystal lcd, String type);
-    void erase(LiquidCrystal lcd);
+    void render(LiquidCrystalRus lcd, String type);
+    void erase(LiquidCrystalRus lcd);
 };
 
 class Selector
@@ -187,16 +187,16 @@ class Selector
   String* arr;
   Selector(int x_1, int y_1, int x_2, int y_2, int n, String* var);
   void setPos(int p);
-  void render(LiquidCrystal lcd, int shift);
-  void erase(LiquidCrystal lcd);
+  void render(LiquidCrystalRus lcd, int shift);
+  void erase(LiquidCrystalRus lcd);
 };
 
 class Bitmap
 {
   public:
     Bitmap(int (*dots)[2], int n, int x1, int y1, int x2, int y2);
-    void render(LiquidCrystal lcd);
-    void erase(LiquidCrystal lcd);
+    void render(LiquidCrystalRus lcd);
+    void erase(LiquidCrystalRus lcd);
   private:  
     int (*_dots)[2];
     int _x1, _x2, _y1, _y2, _n;  
