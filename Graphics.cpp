@@ -208,10 +208,9 @@ Bitmap::Bitmap(int (*dots)[2], int n, int x1, int y1, int x2, int y2)
 
 void Bitmap::render(LiquidCrystal lcd)
 {
-  int a = 0;
   int cols = abs(_x1 - _x2) + 1;
   int rows = abs(_y1 - _y2) + 1;
-  if(rows*cols <= 8)
+  if(a <= 8)
   {
     for(int i = 0; i < rows; i++)
     {
